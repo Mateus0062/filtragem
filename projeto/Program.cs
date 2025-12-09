@@ -9,9 +9,10 @@ class Program
         public int idade { get; set; }
     }
 
-    public static void Main(string[] args)
+    static void Main(string[] args)
     {
         List<User> list = new List<User>();
+        
         for (int i = 0; i < 3; i++)
         {
             User novousuario = new User();

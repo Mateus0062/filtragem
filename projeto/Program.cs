@@ -24,6 +24,8 @@ class Program
             Console.WriteLine("Informe a idade");
             int idadeInput = int.Parse(Console.ReadLine()!);
 
+            /* list.Add(new User { nome = nomeInput, idade = idadeInput });*/ 
+
             novousuario.nome = nomeInput;
             novousuario.idade = idadeInput;
 

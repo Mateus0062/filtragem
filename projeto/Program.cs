@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 
 class Program
 {
@@ -9,9 +10,10 @@ class Program
         public int idade { get; set; }
     }
 
-    public static void Main(string[] args)
+    static void Main(string[] args)
     {
         List<User> list = new List<User>();
+        
         for (int i = 0; i < 3; i++)
         {
             User novousuario = new User();
@@ -28,11 +30,15 @@ class Program
             list.Add(novousuario);
         }
 
+        /* ========================================================================== */
+
         /* Loop para exibir todos os nomes adicionados à lista */
         foreach (var u in list)
         {
             Console.WriteLine($"\nNome: {u.nome}, \nIdade: {u.idade} anos");
         }
+
+        /* ========================================================================== */
 
         /* Filtragem usando o método iterativo */
         Console.WriteLine("\nExibindo os itens da lista após o filtro (utilizando o método iterativo): ");
@@ -43,6 +49,8 @@ class Program
                 Console.WriteLine($"\nNome: {i.nome}, \nIdade: {i.idade} anos");
             }
         }
+
+        /* ========================================================================== */
 
         /* Filtragem usando a sintaxe de consulta LINQ (cláusula Where (Where))*/
         var resultadoFiltrado = from l in list
@@ -55,6 +63,8 @@ class Program
             Console.WriteLine($"\nNome: {resultado}");
         }
 
+        /* ========================================================================== */
+
         /* Filtragem usando a sintaxe do método LINQ (cláusula where)*/
         List<User> listaFiltrada = list.Where(f => f.idade == 18).ToList();
 
@@ -63,5 +73,18 @@ class Program
         {
             Console.WriteLine($"\nNome: {f.nome}, \nIdade: {f.idade} anos");
         }
+
+        /* ========================================================================== */
+
+        /* Filtragem dupla usando a sintaxe do método LINQ (clausula Where) */
+        List<User> listFiltrada = list.Where(f => f.idade == 18 && f.nome == "Mateus").ToList();
+
+        Console.WriteLine("\nExibindo os itens da lista após o filtro: ");
+        foreach (var lf in listFiltrada)
+        {
+            Console.WriteLine($"\nNome: {lf.nome}, \nIdade: {lf.idade} anos");
+        }
+
+        /* ========================================================================== */
     }
 }
